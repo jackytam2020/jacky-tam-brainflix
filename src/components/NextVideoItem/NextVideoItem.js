@@ -3,7 +3,7 @@ import './NextVideoItem.scss';
 
 function NextVideoItem(props) {
   return (
-    <div className="next-video-item">
+    <div className="next-video-item" onClick={props.onClick}>
       <img
         className="next-video-item__thumbnail"
         src={props.image}

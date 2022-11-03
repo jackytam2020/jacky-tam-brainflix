@@ -7,6 +7,11 @@
     display: flex;
     align-items: center;
   }
+
+  &__right {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 /* for small layout */
@@ -19,22 +24,20 @@
       width: 100%;
       justify-content: center;
       margin-bottom: 16px;
-      order: 1;
     }
 
-    &__search-bar {
-      order: 2;
+    &__right {
+      justify-content: center;
+      width: 100%;
     }
 
     &__avatar {
       margin-left: auto;
-      order: 3;
     }
 
     &__button {
       margin-top: 16px;
       width: 100%;
-      order: 4;
     }
   }
 }
@@ -48,15 +51,19 @@
 
     &__logo-block {
       margin-top: 5px;
-      width: 35%;
+    }
+
+    &__search-bar {
+      margin-right: 20px;
     }
 
     &__avatar {
-      order: 4;
+      order: 3;
     }
 
     &__button {
-      order: 3;
+      order: 2;
+      margin-right: 20px;
     }
   }
 }
@@ -70,15 +77,19 @@
 
     &__logo-block {
       margin-top: 5px;
-      width: 55%;
+    }
+
+    &__search-bar {
+      margin-right: 20px;
     }
 
     &__avatar {
-      order: 4;
+      order: 3;
     }
 
     &__button {
-      order: 3;
+      order: 2;
+      margin-right: 30px;
     }
   }
 }

@@ -61,6 +61,7 @@
 /* for large layout */
 @include large() {
   .comment-row {
+    padding-right: 24px;
     &__avatar {
       height: 48px;
       width: 48px;
