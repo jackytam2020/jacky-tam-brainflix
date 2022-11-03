@@ -1,0 +1,84 @@
+@use '../../styles/partials/breakpoints' as *;
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  &__avatar {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* for small layout */
+@include small() {
+  .header {
+    padding: 24px 16px 16px 16px;
+
+    &__logo-block {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 16px;
+      order: 1;
+    }
+
+    &__search-bar {
+      order: 2;
+    }
+
+    &__avatar {
+      margin-left: auto;
+      order: 3;
+    }
+
+    &__button {
+      margin-top: 16px;
+      width: 100%;
+      order: 4;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .header {
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 36px 24px 36px;
+
+    &__logo-block {
+      margin-top: 5px;
+      width: 35%;
+    }
+
+    &__avatar {
+      order: 4;
+    }
+
+    &__button {
+      order: 3;
+    }
+  }
+}
+
+/* for large layout */
+@include large() {
+  .header {
+    align-items: center;
+    justify-content: space-between;
+    padding: 48px 126px 36px 126px;
+
+    &__logo-block {
+      margin-top: 5px;
+      width: 55%;
+    }
+
+    &__avatar {
+      order: 4;
+    }
+
+    &__button {
+      order: 3;
+    }
+  }
+}

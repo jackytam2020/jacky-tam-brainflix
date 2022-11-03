@@ -1,0 +1,162 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+
+.video-details {
+  p {
+    margin: 0;
+  }
+  &__title,
+  &__channel {
+    font-family: 'Avenir Bold';
+  }
+
+  &__date,
+  &__views,
+  &__likes {
+    color: $silver;
+  }
+
+  &__metrics {
+    display: flex;
+    border-bottom: 1px solid $mercury;
+    padding-bottom: 24px;
+  }
+
+  &__likes-icon,
+  &__views-icon {
+    width: 20px;
+    margin-right: 10px;
+  }
+
+  &__likes-holder,
+  &__views-holder {
+    display: flex;
+  }
+}
+
+/* for small layout */
+@include small() {
+  .video-details {
+    padding: 24px 16px 16px 16px;
+    &__title-holder {
+      border-bottom: 1px solid $mercury;
+      padding-bottom: 24px;
+    }
+    &__title {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    &__metrics {
+      padding-top: 24px;
+    }
+
+    &__date,
+    &__channel,
+    &__views,
+    &__likes {
+      font-size: 0.813rem;
+    }
+
+    &__channel,
+    &__views-holder {
+      padding-bottom: 10px;
+    }
+
+    &__metrics-right {
+      margin-left: 30%;
+    }
+
+    &__description {
+      padding-top: 24px;
+      font-size: 0.813rem;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .video-details {
+    padding: 36px 36px 24px 36px;
+
+    &__title {
+      font-size: 2.063rem;
+      padding-bottom: 24px;
+      margin: 0;
+    }
+
+    &__metrics {
+      justify-content: space-between;
+    }
+
+    &__metrics-left,
+    &__metrics-right {
+      display: flex;
+    }
+
+    &__metrics-left {
+      align-items: baseline;
+    }
+
+    &__date,
+    &__likes-holder {
+      padding-left: 20px;
+    }
+
+    &__date,
+    &__channel,
+    &__views,
+    &__likes {
+      font-size: 0.875rem;
+    }
+
+    &__description {
+      padding-top: 36px;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+/* for large layout */
+@include large() {
+  .video-details {
+    padding: 48px 126px 36px 126px;
+
+    &__title {
+      font-size: 2.063rem;
+      padding-bottom: 24px;
+      margin: 0;
+    }
+
+    &__metrics {
+      justify-content: space-between;
+    }
+
+    &__metrics-left,
+    &__metrics-right {
+      display: flex;
+    }
+
+    &__metrics-left {
+      align-items: baseline;
+    }
+
+    &__date,
+    &__likes-holder {
+      padding-left: 20px;
+    }
+
+    &__date,
+    &__channel,
+    &__views,
+    &__likes {
+      font-size: 0.875rem;
+    }
+
+    &__description {
+      padding-top: 48px;
+      font-size: 0.875rem;
+    }
+  }
+}

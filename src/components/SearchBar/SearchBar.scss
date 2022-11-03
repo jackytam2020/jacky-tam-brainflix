@@ -1,0 +1,36 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/breakpoints' as *;
+
+.search-bar-container {
+  &__search-bar {
+    background-color: $alabaster;
+    border-radius: 4px;
+    width: 200px;
+    border: 2px solid $mercury;
+    background: url('../../assets/icons/search.svg') no-repeat 12px;
+    height: 36px;
+    padding-left: 40px;
+  }
+}
+
+// /* for small layout */
+// @include small() {
+//   .search-bar-container {
+//     &__search-bar {
+//       height: 36px;
+//       background: url('../../assets/icons/search.svg') no-repeat 12px;
+//       padding-left: 40px;
+//     }
+//   }
+// }
+
+// /* for medium layout */
+// @include medium() {
+//   .search-bar-container {
+//     &__search-bar {
+//       height: 36px;
+//       background: url('../../assets/icons/search.svg') no-repeat 12px;
+//       padding-left: 40px;
+//     }
+//   }
+// }
