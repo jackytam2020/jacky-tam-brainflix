@@ -1,0 +1,47 @@
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/breakpoints' as *;
+
+.next-video-item {
+  display: flex;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0;
+  }
+
+  &__thumbnail {
+    height: 70px;
+    width: 130px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  &__video-info {
+    margin-left: 10px;
+  }
+
+  &__video-title {
+    font-family: 'Avenir Bold';
+  }
+}
+
+/* for small layout */
+@include small() {
+  .next-video-item {
+    margin-bottom: 20px;
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .next-video-item {
+    margin-bottom: 30px;
+  }
+}
+
+/* for large layout */
+@include large() {
+  .next-video-item {
+    margin-bottom: 30px;
+  }
+}

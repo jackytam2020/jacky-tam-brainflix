@@ -1,0 +1,10 @@
+@use '../../styles/partials/colors' as *;
+
+.next-video-list {
+  p {
+    margin: 0;
+  }
+  &__header {
+    color: $silver;
+  }
+}
