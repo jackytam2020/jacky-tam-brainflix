@@ -40,6 +40,7 @@
 /* for large layout */
 @include large() {
   .new-comment-bar {
+    padding-right: 24px;
     align-items: flex-end;
     justify-content: space-between;
     padding-bottom: 36px;

@@ -9,6 +9,8 @@
 /* for small layout */
 @include small() {
   .comment-counter {
+    padding-top: 16px;
+    padding-bottom: 16px;
     font-size: 0.813rem;
   }
 }
@@ -16,6 +18,8 @@
 /* for medium layout */
 @include medium() {
   .comment-counter {
+    padding-top: 36px;
+    padding-bottom: 36px;
     font-size: 0.875rem;
   }
 }
@@ -23,6 +27,7 @@
 /* for large layout */
 @include large() {
   .comment-counter {
+    padding-bottom: 36px;
     font-size: 0.875rem;
     padding-top: 36px;
   }
