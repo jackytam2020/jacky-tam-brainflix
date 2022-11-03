@@ -1,0 +1,66 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.comment-form {
+  width: 85%;
+  &__header {
+    color: $silver;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  &__input-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    border: 1px solid $mercury;
+    background-color: $alabaster;
+    border-radius: 4px;
+  }
+}
+/* for small layout */
+@include small() {
+  .comment-form {
+    &__header {
+      color: $silver;
+      font-size: 0.813rem;
+    }
+
+    &__input {
+      height: 80px;
+      margin-bottom: 20px;
+    }
+  }
+}
+/* for medium layout */
+@include medium() {
+  .comment-form {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &__input {
+      height: 40px;
+      width: 340px;
+    }
+  }
+}
+
+/* for large layout */
+@include large() {
+  .comment-form {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &__input {
+      height: 40px;
+      width: 340px;
+    }
+  }
+}

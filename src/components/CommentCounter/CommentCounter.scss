@@ -1,0 +1,29 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/fonts' as *;
+
+.comment-counter {
+  font-family: 'Avenir Bold';
+  margin: 0;
+}
+
+/* for small layout */
+@include small() {
+  .comment-counter {
+    font-size: 0.813rem;
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .comment-counter {
+    font-size: 0.875rem;
+  }
+}
+
+/* for large layout */
+@include large() {
+  .comment-counter {
+    font-size: 0.875rem;
+    padding-top: 36px;
+  }
+}

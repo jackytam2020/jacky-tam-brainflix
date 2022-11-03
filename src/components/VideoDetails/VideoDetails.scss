@@ -38,7 +38,6 @@
 /* for small layout */
 @include small() {
   .video-details {
-    padding: 24px 16px 16px 16px;
     &__title-holder {
       border-bottom: 1px solid $mercury;
       padding-bottom: 24px;
@@ -78,8 +77,6 @@
 /* for medium layout */
 @include medium() {
   .video-details {
-    padding: 36px 36px 24px 36px;
-
     &__title {
       font-size: 2.063rem;
       padding-bottom: 24px;
@@ -121,8 +118,6 @@
 /* for large layout */
 @include large() {
   .video-details {
-    padding: 48px 126px 36px 126px;
-
     &__title {
       font-size: 2.063rem;
       padding-bottom: 24px;
