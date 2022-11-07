@@ -1,0 +1,52 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/colors' as *;
+
+.new-comment-bar {
+  display: flex;
+  border-bottom: 1px solid $mercury;
+}
+
+/* for small layout */
+@include small() {
+  .new-comment-bar {
+    justify-content: space-between;
+    padding-bottom: 16px;
+
+    &__avatar {
+      width: 15%;
+      margin-top: 30px;
+    }
+
+    &__form {
+      width: 85%;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .new-comment-bar {
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 36px;
+
+    &__avatar {
+      width: 10%;
+    }
+  }
+}
+
+/* for large layout */
+@include large() {
+  .new-comment-bar {
+    padding-right: 24px;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 36px;
+
+    &__avatar {
+      width: 10%;
+    }
+  }
+}

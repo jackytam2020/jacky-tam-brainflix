@@ -1,0 +1,49 @@
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/breakpoints' as *;
+
+.video-section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: $brainFlix-darkBlack;
+
+  &__video-player {
+    width: 100%;
+    height: 20%;
+    aspect-ratio: 16/9;
+  }
+}
+
+/* for small layout */
+@include small() {
+  .video-section {
+    &__video-player {
+      width: 100%;
+      height: 20%;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .video-section {
+    &__video-player {
+      display: flex;
+      width: 93%;
+      padding-left: 36px;
+      padding-right: 36px;
+      height: 40%;
+    }
+  }
+}
+
+/* for large layout */
+@include large() {
+  .video-section {
+    &__video-player {
+      display: flex;
+      width: 70%;
+      height: 40%;
+    }
+  }
+}

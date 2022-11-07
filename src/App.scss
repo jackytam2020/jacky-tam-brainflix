@@ -1,0 +1,52 @@
+@use './styles/partials/colors' as *;
+@use './styles/partials/fonts' as *;
+@use './styles/partials/breakpoints' as *;
+
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Avenir Regular';
+
+  &__bottom-section {
+    display: flex;
+  }
+}
+
+/* for small layout */
+@include small() {
+  .App {
+    &__bottom-section {
+      padding: 0px 16px 0px 16px;
+      flex-direction: column;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .App {
+    &__bottom-section {
+      padding: 0px 36px 0px 36px;
+      flex-direction: column;
+    }
+  }
+}
+/* for large layout */
+@include large() {
+  .App {
+    &__bottom-section {
+      padding: 0px 126px 0px 126px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__left-section {
+      width: 70%;
+    }
+    &__right-section {
+      width: 30%;
+      border-left: 1px solid $mercury;
+    }
+  }
+}

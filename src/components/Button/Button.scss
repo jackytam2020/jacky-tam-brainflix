@@ -1,0 +1,48 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/colors' as *;
+@use '../../styles/partials/fonts' as *;
+
+.button {
+  background-color: $brainFlix-blue;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  &__icon {
+    height: 1.2rem;
+    left: 12px;
+    position: absolute;
+  }
+
+  &__text {
+    text-align: center;
+    font-family: 'Avenir Bold';
+    font-size: 0.75rem;
+  }
+}
+
+/* for small layout */
+@include small() {
+  .button {
+    &__text {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .button {
+    width: 150px;
+  }
+}
+
+/* for large layout */
+@include large() {
+  .button {
+    width: 150px;
+  }
+}

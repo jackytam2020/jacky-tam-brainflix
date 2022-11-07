@@ -1,0 +1,39 @@
+@use '../../styles/partials/breakpoints' as *;
+
+.avatar {
+  &__image {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+/* for small layout */
+@include small() {
+  .avatar {
+    &__image {
+      width: 36px;
+      height: 36px;
+      padding-top: 5px;
+    }
+  }
+}
+
+/* for medium layout */
+@include medium() {
+  .avatar {
+    &__image {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+/* for large layout */
+@include large() {
+  .avatar {
+    &__image {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
