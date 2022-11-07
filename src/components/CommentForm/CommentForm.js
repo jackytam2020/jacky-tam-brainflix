@@ -7,10 +7,10 @@ function CommentForm(props) {
     <form className="comment-form">
       <div className="comment-form__input-block">
         <p className="comment-form__header">JOIN THE CONVERSATION</p>
-        <input
+        <textarea
           className="comment-form__input"
-          placeholder="Add a new Comment"
-        ></input>
+          placeholder="Add a new comment"
+        ></textarea>
       </div>
       <Button text={'COMMENT'} />
     </form>

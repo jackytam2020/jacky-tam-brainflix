@@ -11,17 +11,24 @@
 
   &__thumbnail {
     height: 70px;
-    width: 130px;
+    width: 120px;
     border-radius: 4px;
     object-fit: cover;
   }
 
   &__video-info {
     margin-left: 10px;
+    width: 160px;
   }
 
   &__video-title {
     font-family: 'Avenir Bold';
+    font-size: 0.813rem;
+    padding-bottom: 10px;
+  }
+
+  &__video-author {
+    font-size: 0.813rem;
   }
 }
 

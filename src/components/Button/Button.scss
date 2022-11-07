@@ -12,7 +12,7 @@
   color: white;
   position: relative;
   &__icon {
-    height: 1.5rem;
+    height: 1.2rem;
     left: 12px;
     position: absolute;
   }
@@ -20,6 +20,7 @@
   &__text {
     text-align: center;
     font-family: 'Avenir Bold';
+    font-size: 0.75rem;
   }
 }
 

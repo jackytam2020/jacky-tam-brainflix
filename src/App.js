@@ -43,7 +43,7 @@ function App() {
                 month: 'numeric',
                 year: 'numeric',
               })
-              .replace(/,/g, ' /')}
+              .replace(/-/g, '/')}
             views={selectedVideo.views}
             likes={selectedVideo.likes}
             description={selectedVideo.description}
