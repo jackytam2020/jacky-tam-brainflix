@@ -19,6 +19,14 @@
     border: 1px solid $mercury;
     background-color: $alabaster;
     border-radius: 4px;
+    padding-left: 16px;
+
+    resize: none;
+  }
+
+  &__input::placeholder {
+    padding-top: 10px;
+    font-family: 'Avenir Regular';
   }
 }
 /* for small layout */

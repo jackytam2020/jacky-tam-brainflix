@@ -13,13 +13,13 @@ function CommentRow(props) {
           <p className="comment-row__date">
             {new Date(props.timestamp)
               .toLocaleString('en-CA', {
+                formatMatcher: 'best fit',
                 timeZone: 'UTC',
                 day: '2-digit',
-                month: 'short',
+                month: 'numeric',
                 year: 'numeric',
-                weekday: 'short',
               })
-              .replace(/,/g, ' ')}
+              .replace(/-/g, '/')}
           </p>
         </div>
         <p className="comment-row__comment">{props.comment}</p>
