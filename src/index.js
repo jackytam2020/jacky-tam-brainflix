@@ -2,13 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import UploadPage from './pages/UploadPage';
+import UploadPage from '../src/pages/UploadPage';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="home" element={<App />} />
+        <Route path="/home/:videoID" element={<App />} />
+        <Route path="/Upload" element={<UploadPage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

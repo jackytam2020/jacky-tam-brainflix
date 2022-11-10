@@ -8,6 +8,10 @@
   &__header {
     color: $silver;
   }
+  &__link {
+    text-decoration: none;
+    color: $brainFlix-darkBlack;
+  }
 }
 
 @include small() {

@@ -4,12 +4,16 @@ import LogoBlock from '../LogoBlock/LogoBlock';
 import SearchBar from '../SearchBar/SearchBar';
 import Avatar from '../Avatar/Avatar';
 import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
+import UploadIcon from '../../assets/icons/upload.svg';
 
 function Header(props) {
   return (
     <header className="header">
       <div className="header__logo-block">
-        <LogoBlock />
+        <Link to={'/'}>
+          <LogoBlock />
+        </Link>
       </div>
       <div className="header__right">
         <div className="header__search-bar">
@@ -19,7 +23,9 @@ function Header(props) {
           <Avatar />
         </div>
         <div className="header__button">
-          <Button text={'UPLOAD'} />
+          <Link to={'/Upload'}>
+            <Button icon={UploadIcon} text={'UPLOAD'} />
+          </Link>
         </div>
       </div>
     </header>
