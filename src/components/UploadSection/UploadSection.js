@@ -4,13 +4,14 @@ import Thumbnail from '../../assets/images/Upload-video-preview.jpg';
 import InputForm from '../InputForm/InputForm';
 import Button from '../Button/Button';
 import PublishIcon from '../../assets/icons/publish.svg';
+import TextAreaInput from '../TextAreaInput/TextAreaInput';
 
 import { Link } from 'react-router-dom';
 
 function UploadSection(props) {
   return (
     <section className="upload-section">
-      <div className="upload-section__container">
+      <form className="upload-section__container">
         <div className="upload-section__header-holder">
           <h1 className="upload-section__header">Upload Video</h1>
         </div>
@@ -31,10 +32,9 @@ function UploadSection(props) {
               />
             </div>
             <div className="upload-section__add-description">
-              <InputForm
+              <TextAreaInput
                 placeholder={'Add a description to your video'}
                 label={'ADD A VIDEO DESCRIPTION'}
-                size={'large'}
               />
             </div>
           </div>
@@ -49,7 +49,7 @@ function UploadSection(props) {
             <p className="upload-section__cancel-button">Cancel</p>
           </Link>
         </div>
-      </div>
+      </form>
     </section>
   );
 }

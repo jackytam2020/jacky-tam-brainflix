@@ -33,9 +33,32 @@
     font-family: 'Avenir Bold';
   }
 
+  &__comment {
+    padding-top: 10px;
+  }
+
   &__date {
     margin: 0;
     color: $silver;
+  }
+
+  &__likes {
+    padding-top: 10px;
+  }
+
+  &__likes-delete-icon {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  &__like-icon {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__delete-icon {
+    cursor: pointer;
   }
 }
 

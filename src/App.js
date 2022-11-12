@@ -33,6 +33,7 @@ function App() {
     const response = await axios.get(
       `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=${apiKey}`
     );
+    console.log(response.data);
     setSelectedVideo(response.data);
   };
 
@@ -45,6 +46,7 @@ function App() {
   useEffect(() => {
     getAllVideos(videoID);
     getSelectedVideo(videoID);
+    console.log(selectedVideo);
   }, []);
 
   useEffect(() => {
@@ -68,7 +70,17 @@ function App() {
       {selectedVideo && <VideoPlayer selectedVideo={selectedVideo} />}
       <section className="app-container__bottom-section">
         <div className="app-container__left-section">
-          {selectedVideo && <VideoDetails selectedVideo={selectedVideo} />}
+          {selectedVideo && (
+            <VideoDetails
+              selectedVideo={selectedVideo}
+              getSelectedVideo={getSelectedVideo}
+              currentVideoID={
+                params.videoID
+                  ? params.videoID
+                  : '84e96018-4022-434e-80bf-000ce4cd12b8'
+              }
+            />
+          )}
         </div>
         <div className="app-container__right-section">
           <NextVideoList

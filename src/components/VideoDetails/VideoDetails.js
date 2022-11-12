@@ -5,13 +5,9 @@ import LikesLogo from '../../assets/icons/likes.svg';
 
 import CommentSection from '../CommentSection/CommentSection';
 
-function VideoDetails({ selectedVideo, getDefaultSelectedVideo }) {
+function VideoDetails({ selectedVideo, currentVideoID, getSelectedVideo }) {
   const { title, channel, timestamp, views, likes, description, comments, id } =
     selectedVideo;
-
-  // useEffect(() => {
-  //   getDefaultSelectedVideo(id);
-  // }, []);
 
   return (
     <section className="video-details">
@@ -45,7 +41,12 @@ function VideoDetails({ selectedVideo, getDefaultSelectedVideo }) {
       <p className="video-details__description">{description}</p>
 
       {comments && (
-        <CommentSection numOfComments={comments.length} comments={comments} />
+        <CommentSection
+          numOfComments={comments.length}
+          comments={comments}
+          currentVideoID={currentVideoID}
+          getSelectedVideo={getSelectedVideo}
+        />
       )}
     </section>
   );
