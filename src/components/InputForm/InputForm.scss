@@ -24,4 +24,8 @@
     padding-top: 10px;
     font-family: 'Avenir Regular';
   }
+
+  &__input--invalid {
+    border: 1px solid red;
+  }
 }

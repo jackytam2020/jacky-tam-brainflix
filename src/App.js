@@ -33,7 +33,6 @@ function App() {
     const response = await axios.get(
       `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=${apiKey}`
     );
-    console.log(response.data);
     setSelectedVideo(response.data);
   };
 
@@ -46,7 +45,6 @@ function App() {
   useEffect(() => {
     getAllVideos(videoID);
     getSelectedVideo(videoID);
-    console.log(selectedVideo);
   }, []);
 
   useEffect(() => {

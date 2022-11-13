@@ -6,9 +6,10 @@ function TextAreaInput(props) {
     <div className="text-area-block">
       <p className="text-area-block__header">{props.label}</p>
       <textarea
-        className={'text-area-block__input'}
+        className={props.inputClassName}
         placeholder={props.placeholder}
         onChange={props.onChange}
+        name={props.name}
       ></textarea>
     </div>
   );
