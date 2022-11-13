@@ -17,7 +17,16 @@ function VideoDetails({ selectedVideo, currentVideoID, getSelectedVideo }) {
       <div className="video-details__metrics">
         <div className="video-details__metrics-left">
           <p className="video-details__channel">By {channel}</p>
-          <p className="video-details__date">{timestamp}</p>
+          <p className="video-details__date">
+            {new Date(timestamp)
+              .toLocaleString('en-CA', {
+                timeZone: 'UTC',
+                day: '2-digit',
+                month: 'numeric',
+                year: 'numeric',
+              })
+              .replace(/-/g, '/')}
+          </p>
         </div>
         <div className="video-details__metrics-right">
           <div className="video-details__views-holder">

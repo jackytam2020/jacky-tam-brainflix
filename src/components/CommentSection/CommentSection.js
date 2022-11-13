@@ -9,15 +9,22 @@ import axios from 'axios';
 function CommentSection(props) {
   const [newComment, setNewComment] = useState('');
 
-  const submitComment = async () => {
-    const response = await axios.post(
-      `https://project-2-api.herokuapp.com/videos/${props.currentVideoID}/comments?api_key=1ed048a3-1c44-4c1d-93f6-633b34652602`,
-      {
-        name: 'Jacky',
-        comment: newComment,
-      }
-    );
-    props.getSelectedVideo(props.currentVideoID);
+  const submitComment = async (e) => {
+    e.preventDefault();
+
+    if (newComment !== '') {
+      const response = await axios.post(
+        `https://project-2-api.herokuapp.com/videos/${props.currentVideoID}/comments?api_key=1ed048a3-1c44-4c1d-93f6-633b34652602`,
+        {
+          name: 'Jacky',
+          comment: newComment,
+        }
+      );
+      props.getSelectedVideo(props.currentVideoID);
+    }
+
+    //clear input on submit
+    setNewComment('');
   };
 
   const deleteComment = async (commentID) => {
@@ -28,7 +35,11 @@ function CommentSection(props) {
     props.getSelectedVideo(props.currentVideoID);
   };
 
-  const renderedComments = props.comments.map((comments) => {
+  const sortedComments = props.comments.sort(
+    (a, b) => b.timestamp - a.timestamp
+  );
+
+  const renderedComments = sortedComments.map((comments) => {
     return (
       <CommentRow key={comments.id} {...comments} onDelete={deleteComment} />
     );
@@ -36,7 +47,11 @@ function CommentSection(props) {
   return (
     <section className="comment-section">
       <CommentCounter numOfComments={props.numOfComments} />
-      <NewCommentBar setNewComment={setNewComment} onSubmit={submitComment} />
+      <NewCommentBar
+        setNewComment={setNewComment}
+        onSubmit={submitComment}
+        newComment={newComment}
+      />
       {renderedComments}
     </section>
   );

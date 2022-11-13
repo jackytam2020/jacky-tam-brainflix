@@ -2,8 +2,6 @@ import React from 'react';
 import './InputForm.scss';
 
 function InputForm(props) {
-
-
   return (
     <div className="input-block">
       <p className="input-block__header">{props.label}</p>
@@ -11,6 +9,7 @@ function InputForm(props) {
         className={props.inputClassName}
         placeholder={props.placeholder}
         onChange={props.onChange}
+        value={props.value}
         name={props.name}
       ></input>
     </div>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './UploadSection.scss';
 import Thumbnail from '../../assets/images/Upload-video-preview.jpg';
 import InputForm from '../InputForm/InputForm';
@@ -7,73 +7,90 @@ import PublishIcon from '../../assets/icons/publish.svg';
 import TextAreaInput from '../TextAreaInput/TextAreaInput';
 
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UploadSection(props) {
   const [inputDetails, setInputDetails] = useState({
-    title:'',
-    description:''
-  })
-  const [validTitleInput, setValidTitleInput] = useState('input-block__input')
-  const [validDescInput, setValidDescInput] = useState('text-area-block__input')
+    title: '',
+    description: '',
+  });
+  const [validTitleInput, setValidTitleInput] = useState('input-block__input');
+  const [validDescInput, setValidDescInput] = useState(
+    'text-area-block__input'
+  );
   const navigate = useNavigate();
 
   const handleFormInput = (event) => {
-   
-    if(event.target.name === 'title'){
-      setInputDetails(
-        {
-          ...inputDetails,
-          title:event.target.value
-        }
-      )
-      if(event.target.value !== ''){
-        setValidTitleInput('input-block__input')
+    if (event.target.name === 'title') {
+      setInputDetails({
+        ...inputDetails,
+        title: event.target.value,
+      });
+      if (event.target.value !== '') {
+        setValidTitleInput('input-block__input');
+      } else {
+        setValidTitleInput('input-block__input input-block__input--invalid');
       }
-      else{
-        setValidTitleInput('input-block__input input-block__input--invalid')
-      }
-    }
-    else if(event.target.name === 'description'){
-      setInputDetails(
-        {
-          ...inputDetails,
-          description:event.target.value
-        }
-      )
-      if(event.target.value !== ''){
-        setValidDescInput('text-area-block__input')
-      }
-      else{
-        setValidDescInput('text-area-block__input text-area-block__input--invalid')
+    } else if (event.target.name === 'description') {
+      setInputDetails({
+        ...inputDetails,
+        description: event.target.value,
+      });
+      if (event.target.value !== '') {
+        setValidDescInput('text-area-block__input');
+      } else {
+        setValidDescInput(
+          'text-area-block__input text-area-block__input--invalid'
+        );
       }
     }
-  }
+  };
 
   const handleInputError = () => {
-    if(inputDetails.title === '') {
-      setValidTitleInput('input-block__input input-block__input--invalid')
+    if (inputDetails.title === '') {
+      setValidTitleInput('input-block__input input-block__input--invalid');
     }
 
-    if(inputDetails.description === '') {
-      setValidDescInput('text-area-block__input text-area-block__input--invalid')
+    if (inputDetails.description === '') {
+      setValidDescInput(
+        'text-area-block__input text-area-block__input--invalid'
+      );
     }
-  }
+  };
 
-  const onSubmitInput = () => {
-    handleInputError()
- 
-    if(inputDetails.title !== '' && inputDetails.description !== ''){
+  const onSubmitInput = (e) => {
+    e.preventDefault();
+    handleInputError();
+
+    if (inputDetails.title !== '' && inputDetails.description !== '') {
+      setInputDetails({
+        title: '',
+        description: '',
+      });
+
+      const successFeedback = () => {
+        toast.success('Video Uploaded!', {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          theme: 'colored',
+        });
+      };
+      successFeedback();
       setTimeout(() => {
-        navigate('/home')
-      },2000)
+        navigate('/home');
+      }, 2000);
+    } else {
+      const invalidFeedback = () =>
+        toast.error('Please fill in all inputs', {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          theme: 'colored',
+        });
+      invalidFeedback();
     }
-    else {
-      navigate('/Upload')
-    }
-  }
+  };
   return (
     <section className="upload-section">
-      <form className="upload-section__container">
+      <form className="upload-section__container" onSubmit={onSubmitInput}>
         <div className="upload-section__header-holder">
           <h1 className="upload-section__header">Upload Video</h1>
         </div>
@@ -94,6 +111,7 @@ function UploadSection(props) {
                 name={'title'}
                 onChange={handleFormInput}
                 inputClassName={validTitleInput}
+                value={inputDetails.title}
               />
             </div>
             <div className="upload-section__add-description">
@@ -103,17 +121,19 @@ function UploadSection(props) {
                 name={'description'}
                 onChange={handleFormInput}
                 inputClassName={validDescInput}
+                value={inputDetails.description}
               />
             </div>
           </div>
         </div>
         <div className="upload-section__action-buttons">
           <div className="upload-section__publish-button">
-            <Button icon={PublishIcon} text={'PUBLISH'} onSubmit={onSubmitInput}/>
+            <Button icon={PublishIcon} text={'PUBLISH'} type={'submit'} />
           </div>
           <Link to={'/home'} className="upload-section__cancel-button-link">
             <p className="upload-section__cancel-button">Cancel</p>
           </Link>
+          <ToastContainer />
         </div>
       </form>
     </section>
