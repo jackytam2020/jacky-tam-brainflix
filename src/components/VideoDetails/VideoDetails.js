@@ -5,13 +5,9 @@ import LikesLogo from '../../assets/icons/likes.svg';
 
 import CommentSection from '../CommentSection/CommentSection';
 
-function VideoDetails({ selectedVideo, getDefaultSelectedVideo }) {
+function VideoDetails({ selectedVideo, currentVideoID, getSelectedVideo }) {
   const { title, channel, timestamp, views, likes, description, comments, id } =
     selectedVideo;
-
-  // useEffect(() => {
-  //   getDefaultSelectedVideo(id);
-  // }, []);
 
   return (
     <section className="video-details">
@@ -21,7 +17,16 @@ function VideoDetails({ selectedVideo, getDefaultSelectedVideo }) {
       <div className="video-details__metrics">
         <div className="video-details__metrics-left">
           <p className="video-details__channel">By {channel}</p>
-          <p className="video-details__date">{timestamp}</p>
+          <p className="video-details__date">
+            {new Date(timestamp)
+              .toLocaleString('en-CA', {
+                timeZone: 'UTC',
+                day: '2-digit',
+                month: 'numeric',
+                year: 'numeric',
+              })
+              .replace(/-/g, '/')}
+          </p>
         </div>
         <div className="video-details__metrics-right">
           <div className="video-details__views-holder">
@@ -45,7 +50,12 @@ function VideoDetails({ selectedVideo, getDefaultSelectedVideo }) {
       <p className="video-details__description">{description}</p>
 
       {comments && (
-        <CommentSection numOfComments={comments.length} comments={comments} />
+        <CommentSection
+          numOfComments={comments.length}
+          comments={comments}
+          currentVideoID={currentVideoID}
+          getSelectedVideo={getSelectedVideo}
+        />
       )}
     </section>
   );

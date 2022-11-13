@@ -68,7 +68,17 @@ function App() {
       {selectedVideo && <VideoPlayer selectedVideo={selectedVideo} />}
       <section className="app-container__bottom-section">
         <div className="app-container__left-section">
-          {selectedVideo && <VideoDetails selectedVideo={selectedVideo} />}
+          {selectedVideo && (
+            <VideoDetails
+              selectedVideo={selectedVideo}
+              getSelectedVideo={getSelectedVideo}
+              currentVideoID={
+                params.videoID
+                  ? params.videoID
+                  : '84e96018-4022-434e-80bf-000ce4cd12b8'
+              }
+            />
+          )}
         </div>
         <div className="app-container__right-section">
           <NextVideoList

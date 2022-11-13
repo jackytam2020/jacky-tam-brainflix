@@ -5,13 +5,16 @@
 .button {
   background-color: $brainFlix-blue;
   height: 40px;
+  width: 100%;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   position: relative;
+  border: none;
   cursor: pointer;
+
   &__icon {
     height: 1.2rem;
     left: 12px;
