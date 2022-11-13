@@ -1,5 +1,7 @@
 import React from 'react';
 import './CommentRow.scss';
+import LikesIcon from '../../assets/icons/likes.svg';
+import DeleteIcon from '../../assets/icons/icon-delete.svg';
 
 function CommentRow(props) {
   return (
@@ -23,6 +25,22 @@ function CommentRow(props) {
           </p>
         </div>
         <p className="comment-row__comment">{props.comment}</p>
+        <p className="comment-row__likes">{props.likes} likes</p>
+        <div className="comment-row__likes-delete-icon">
+          <img
+            src={LikesIcon}
+            className="comment-row__like-icon"
+            alt="like icon"
+          />
+          <img
+            src={DeleteIcon}
+            className="comment-row__delete-icon"
+            alt="like icon"
+            onClick={() => {
+              props.onDelete(props.id);
+            }}
+          />
+        </div>
       </div>
     </div>
   );

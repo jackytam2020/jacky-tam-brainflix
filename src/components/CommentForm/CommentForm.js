@@ -1,18 +1,26 @@
 import React from 'react';
 import './CommentForm.scss';
 import Button from '../Button/Button';
-
-function CommentForm(props) {
+import InputForm from '../InputForm/InputForm';
+import PostCommentIcon from '../../assets/icons/add_comment.svg';
+function CommentForm({ setNewComment, onSubmit, newComment }) {
+  const handleCommentInput = (e) => {
+    setNewComment(e.target.value);
+  };
   return (
-    <form className="comment-form">
-      <div className="comment-form__input-block">
-        <p className="comment-form__header">JOIN THE CONVERSATION</p>
-        <textarea
-          className="comment-form__input"
-          placeholder="Add a new comment"
-        ></textarea>
+    <form className="comment-form" onSubmit={onSubmit}>
+      <div className="comment-form__input">
+        <InputForm
+          placeholder={'Add a new comment'}
+          label={'JOIN THE CONVERSATION'}
+          onChange={handleCommentInput}
+          value={newComment}
+          inputClassName={'input-block__input'}
+        />
       </div>
-      <Button text={'COMMENT'} />
+      <div className="comment-form__post-button">
+        <Button icon={PostCommentIcon} text={'COMMENT'} type={'submit'} />
+      </div>
     </form>
   );
 }

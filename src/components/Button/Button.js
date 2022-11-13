@@ -1,18 +1,13 @@
 import React from 'react';
 import './Button.scss';
-import UploadIcon from '../../assets/icons/upload.svg';
 import AddCommentIcon from '../../assets/icons/add_comment.svg';
 
 function Button(props) {
   return (
-    <div className="button">
-      <img
-        src={props.text === 'UPLOAD' ? UploadIcon : AddCommentIcon}
-        className="button__icon"
-        alt="button icon"
-      />
+    <button className="button" onClick={props.onClick} type={props.type}>
+      <img src={props.icon} className="button__icon" alt="button icon" />
       <p className="button__text">{props.text}</p>
-    </div>
+    </button>
   );
 }
 

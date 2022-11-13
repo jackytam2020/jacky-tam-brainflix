@@ -2,11 +2,15 @@
 @use './styles/partials/fonts' as *;
 @use './styles/partials/breakpoints' as *;
 
-.App {
+.app-container {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Avenir Regular';
+
+  a {
+    text-decoration: none;
+  }
 
   &__bottom-section {
     display: flex;
@@ -15,7 +19,7 @@
 
 /* for small layout */
 @include small() {
-  .App {
+  .app-container {
     &__bottom-section {
       padding: 0px 16px 0px 16px;
       flex-direction: column;
@@ -25,7 +29,7 @@
 
 /* for medium layout */
 @include medium() {
-  .App {
+  .app-container {
     &__bottom-section {
       padding: 0px 36px 0px 36px;
       flex-direction: column;
@@ -34,7 +38,7 @@
 }
 /* for large layout */
 @include large() {
-  .App {
+  .app-container {
     &__bottom-section {
       padding: 0px 126px 0px 126px;
       display: flex;
