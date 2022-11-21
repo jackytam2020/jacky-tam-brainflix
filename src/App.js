@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BrowserRouter, Routes } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 //components
 import Header from './components/Header/Header';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import VideoDetails from './components/VideoDetails/VideoDetails';
-import CommentSection from './components/CommentSection/CommentSection';
 import NextVideoList from './components/NextVideoList/NextVideoList';
 
 import './App.scss';
 
 function App() {
-  const apiKey = '1ed048a3-1c44-4c1d-93f6-633b34652602';
+  // const apiKey = '1ed048a3-1c44-4c1d-93f6-633b34652602';
   const params = useParams();
   const [videoID, setVideoID] = useState(
     params.videoID ? params.videoID : '84e96018-4022-434e-80bf-000ce4cd12b8'
@@ -23,16 +21,12 @@ function App() {
 
   //grab videos for side bar except for the currently selected
   const getAllVideos = async (videoID) => {
-    const response = await axios.get(
-      `https://project-2-api.herokuapp.com/videos?api_key=${apiKey}`
-    );
+    const response = await axios.get(`http://localhost:8080/videos`);
     setSideBarVideos(response.data.filter((video) => video.id !== videoID));
   };
 
   const getSelectedVideo = async (videoID) => {
-    const response = await axios.get(
-      `https://project-2-api.herokuapp.com/videos/${videoID}?api_key=${apiKey}`
-    );
+    const response = await axios.get(`http://localhost:8080/videos/${videoID}`);
     setSelectedVideo(response.data);
   };
 
@@ -45,7 +39,7 @@ function App() {
   useEffect(() => {
     getAllVideos(videoID);
     getSelectedVideo(videoID);
-  }, []);
+  });
 
   useEffect(() => {
     getSelectedVideo(videoID);

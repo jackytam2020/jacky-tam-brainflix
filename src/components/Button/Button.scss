@@ -28,6 +28,10 @@
   }
 }
 
+.button:hover {
+  background-color: $brainFlix-darkBlue;
+}
+
 /* for small layout */
 @include small() {
   .button {

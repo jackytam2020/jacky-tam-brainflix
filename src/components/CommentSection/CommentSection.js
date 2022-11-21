@@ -1,35 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CommentSection.scss';
 import CommentCounter from '../CommentCounter/CommentCounter';
 import NewCommentBar from '../NewCommentBar/NewCommentBar';
 import CommentRow from '../CommentRow/CommentRow';
-import { useState } from 'react';
+
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CommentSection(props) {
   const [newComment, setNewComment] = useState('');
+  const [validCommentInput, setValidCommentInput] =
+    useState('input-block__input');
+
+  const invalidInput = () =>
+    toast.error('Please add a comment', {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      theme: 'colored',
+    });
 
   const submitComment = async (e) => {
     e.preventDefault();
 
     if (newComment !== '') {
-      const response = await axios.post(
-        `https://project-2-api.herokuapp.com/videos/${props.currentVideoID}/comments?api_key=1ed048a3-1c44-4c1d-93f6-633b34652602`,
+      await axios.post(
+        `http://localhost:8080/videos/${props.currentVideoID}/comments`,
         {
           name: 'Jacky',
           comment: newComment,
         }
       );
       props.getSelectedVideo(props.currentVideoID);
+    } else {
+      invalidInput();
+      setValidCommentInput('input-block__input input-block__input--invalid');
     }
 
     //clear input on submit
     setNewComment('');
   };
 
+  const likeComment = async (commentID) => {
+    const response = await axios.patch(
+      `http://localhost:8080/videos/${props.currentVideoID}/comments/${commentID}`
+    );
+    console.log(response);
+    props.getSelectedVideo(props.currentVideoID);
+  };
+
   const deleteComment = async (commentID) => {
     const response = await axios.delete(
-      `https://project-2-api.herokuapp.com/videos/${props.currentVideoID}/comments/${commentID}?api_key=1ed048a3-1c44-4c1d-93f6-633b34652602`
+      `http://localhost:8080/videos/${props.currentVideoID}/comments/${commentID}`
     );
     console.log(response);
     props.getSelectedVideo(props.currentVideoID);
@@ -41,7 +62,12 @@ function CommentSection(props) {
 
   const renderedComments = sortedComments.map((comments) => {
     return (
-      <CommentRow key={comments.id} {...comments} onDelete={deleteComment} />
+      <CommentRow
+        key={comments.id}
+        {...comments}
+        onDelete={deleteComment}
+        onLike={likeComment}
+      />
     );
   });
   return (
@@ -50,8 +76,11 @@ function CommentSection(props) {
       <NewCommentBar
         setNewComment={setNewComment}
         onSubmit={submitComment}
+        validCommentInput={validCommentInput}
+        setValidCommentInput={setValidCommentInput}
         newComment={newComment}
       />
+      <ToastContainer />
       {renderedComments}
     </section>
   );

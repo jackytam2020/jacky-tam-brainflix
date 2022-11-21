@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './VideoDetails.scss';
 import ViewsLogo from '../../assets/icons/views.svg';
 import LikesLogo from '../../assets/icons/likes.svg';
@@ -6,7 +6,7 @@ import LikesLogo from '../../assets/icons/likes.svg';
 import CommentSection from '../CommentSection/CommentSection';
 
 function VideoDetails({ selectedVideo, currentVideoID, getSelectedVideo }) {
-  const { title, channel, timestamp, views, likes, description, comments, id } =
+  const { title, channel, timestamp, views, likes, description, comments } =
     selectedVideo;
 
   return (
