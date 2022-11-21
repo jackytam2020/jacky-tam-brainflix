@@ -1,6 +1,5 @@
 import React from 'react';
 import './Button.scss';
-import AddCommentIcon from '../../assets/icons/add_comment.svg';
 
 function Button(props) {
   return (

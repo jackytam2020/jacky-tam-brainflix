@@ -3,9 +3,21 @@ import './CommentForm.scss';
 import Button from '../Button/Button';
 import InputForm from '../InputForm/InputForm';
 import PostCommentIcon from '../../assets/icons/add_comment.svg';
-function CommentForm({ setNewComment, onSubmit, newComment }) {
+function CommentForm({
+  setNewComment,
+  onSubmit,
+  newComment,
+  validCommentInput,
+  setValidCommentInput,
+}) {
   const handleCommentInput = (e) => {
     setNewComment(e.target.value);
+
+    if (e.target.value !== '') {
+      setValidCommentInput('input-block__input');
+    } else {
+      setValidCommentInput('input-block__input input-block__input--invalid');
+    }
   };
   return (
     <form className="comment-form" onSubmit={onSubmit}>
@@ -15,7 +27,7 @@ function CommentForm({ setNewComment, onSubmit, newComment }) {
           label={'JOIN THE CONVERSATION'}
           onChange={handleCommentInput}
           value={newComment}
-          inputClassName={'input-block__input'}
+          inputClassName={validCommentInput}
         />
       </div>
       <div className="comment-form__post-button">

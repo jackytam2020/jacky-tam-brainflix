@@ -31,6 +31,9 @@ function CommentRow(props) {
             src={LikesIcon}
             className="comment-row__like-icon"
             alt="like icon"
+            onClick={() => {
+              props.onLike(props.id);
+            }}
           />
           <img
             src={DeleteIcon}
