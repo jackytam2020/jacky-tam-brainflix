@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './UploadSection.scss';
-import Thumbnail from '../../assets/images/Upload-video-preview.jpg';
+import thumbnailPlaceholder from '../../assets/images/Upload-video-preview.jpg';
 import InputForm from '../InputForm/InputForm';
 import Button from '../Button/Button';
 import PublishIcon from '../../assets/icons/publish.svg';
 import TextAreaInput from '../TextAreaInput/TextAreaInput';
+import UploadIcon from '../../assets/icons/upload.svg';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { Uploader } from 'uploader';
+import { UploadButton } from 'react-uploader';
 
 function UploadSection(props) {
   const [inputDetails, setInputDetails] = useState({
     title: '',
     description: '',
+    thumbnailUpload: '',
   });
   const [validTitleInput, setValidTitleInput] = useState('input-block__input');
   const [validDescInput, setValidDescInput] = useState(
@@ -59,12 +64,46 @@ function UploadSection(props) {
     }
   };
 
+  const invalidInputs = () =>
+    toast.error('Please fill in all inputs', {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      theme: 'colored',
+    });
+
+  const missingThumbnail = () =>
+    toast.error('Please upload a thumbnail', {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      theme: 'colored',
+    });
+
+  const uploadNewVideo = async (title, description, thumbnailUpload) => {
+    const response = await axios.post('http://localhost:8080/videos', {
+      title: title,
+      description: description,
+      thumbnailUpload: thumbnailUpload,
+    });
+
+    console.log(response);
+  };
+
   const onSubmitInput = (e) => {
     e.preventDefault();
     handleInputError();
 
-    if (inputDetails.title !== '' && inputDetails.description !== '') {
+    if (
+      inputDetails.title !== '' &&
+      inputDetails.description !== '' &&
+      inputDetails.thumbnailUpload !== ''
+    ) {
+      //add new video to endpoint
+      uploadNewVideo(
+        inputDetails.title,
+        inputDetails.description,
+        inputDetails.thumbnailUpload
+      );
+
       setInputDetails({
+        ...inputDetails,
         title: '',
         description: '',
       });
@@ -76,18 +115,20 @@ function UploadSection(props) {
         });
       };
       successFeedback();
+
       setTimeout(() => {
         navigate('/home');
       }, 2000);
-    } else {
-      const invalidFeedback = () =>
-        toast.error('Please fill in all inputs', {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          theme: 'colored',
-        });
-      invalidFeedback();
+    } else if (inputDetails.title === '' || inputDetails.description === '') {
+      invalidInputs();
+    } else if (inputDetails.thumbnailUpload === '') {
+      missingThumbnail();
     }
   };
+
+  const uploader = Uploader({
+    apiKey: 'free',
+  });
   return (
     <section className="upload-section">
       <form className="upload-section__container" onSubmit={onSubmitInput}>
@@ -99,7 +140,11 @@ function UploadSection(props) {
             <p className="upload-section__thumbnail-header">VIDEO THUMBNAIL</p>
             <img
               className="upload-section__thumbnail"
-              src={Thumbnail}
+              src={
+                inputDetails.thumbnailUpload
+                  ? inputDetails.thumbnailUpload
+                  : thumbnailPlaceholder
+              }
               alt="thumbnail"
             />
           </div>
@@ -123,6 +168,25 @@ function UploadSection(props) {
                 inputClassName={validDescInput}
                 value={inputDetails.description}
               />
+            </div>
+            <div className="upload-section__add-thumbnail">
+              <p className="upload-section__upload-thumbnail-text">
+                UPLOAD A THUMBNAIL
+              </p>
+              <UploadButton
+                uploader={uploader}
+                options={{ multi: true }}
+                onComplete={(files) =>
+                  setInputDetails({
+                    ...inputDetails,
+                    thumbnailUpload: files[0].fileUrl,
+                  })
+                }
+              >
+                {({ onClick }) => (
+                  <Button icon={UploadIcon} text={'UPLOAD'} onClick={onClick} />
+                )}
+              </UploadButton>
             </div>
           </div>
         </div>
